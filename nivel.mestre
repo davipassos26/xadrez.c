@@ -1,0 +1,97 @@
+#include <stdio.h>
+
+// -----------------------------------------
+// Função recursiva para movimentar a TORRE
+// -----------------------------------------
+void moverTorre(int casas, int atual) {
+    if (atual > casas) return; // Condição de parada
+    printf("Direita (%d)\n", atual);
+    moverTorre(casas, atual + 1); // Chamada recursiva
+}
+
+// -----------------------------------------
+// Função recursiva + loops aninhados para o BISPO
+// -----------------------------------------
+void moverBispoRecursivo(int casas, int passo) {
+    if (passo > casas) return; // Condição de parada
+
+    // Loop aninhado: primeiro sobe (vertical), depois vai para direita (horizontal)
+    for (int vertical = 1; vertical <= 1; vertical++) { // Simula o eixo vertical
+        for (int horizontal = 1; horizontal <= 1; horizontal++) { // Eixo horizontal
+            printf("Cima, Direita (%d)\n", passo);
+        }
+    }
+
+    moverBispoRecursivo(casas, passo + 1); // Chamada recursiva
+}
+
+// -----------------------------------------
+// Função recursiva para movimentar a RAINHA
+// -----------------------------------------
+void moverRainha(int casas, int atual) {
+    if (atual > casas) return; // Condição de parada
+    printf("Esquerda (%d)\n", atual);
+    moverRainha(casas, atual + 1); // Chamada recursiva
+}
+
+// -----------------------------------------
+// Função para movimentar o CAVALO (loops complexos)
+// -----------------------------------------
+void moverCavalo() {
+    int movimentosVerticais = 2; // Duas casas para cima
+    int movimentosHorizontais = 1; // Uma casa para a direita
+
+    printf("Movimento do CAVALO:\n");
+
+    for (int i = 1, j = 0; i <= movimentosVerticais; i++, j++) {
+        if (i == 1 && j == 0) {
+            printf("Cima (%d)\n", i);
+        } else if (i == 2) {
+            printf("Cima (%d)\n", i);
+        }
+
+        // Quando termina o movimento vertical, vai para a direita
+        if (i == movimentosVerticais) {
+            int k = 1;
+            while (k <= movimentosHorizontais) {
+                if (k == 1) {
+                    printf("Direita (%d)\n", k);
+                    break; // Usa break para encerrar o loop após completar o "L"
+                }
+                k++;
+            }
+        }
+
+        // Exemplo de uso de continue
+        if (i == 1) continue; // Continua para o próximo movimento sem parar
+    }
+}
+
+// -----------------------------------------
+// Função principal
+// -----------------------------------------
+int main() {
+    printf("=== Movimentos das Peças de Xadrez ===\n\n");
+
+    // Movimento da TORRE (recursivo)
+    printf("Movimento da TORRE:\n");
+    moverTorre(5, 1); // 5 casas para a direita
+    printf("\n");
+
+    // Movimento do BISPO (recursivo + loops aninhados)
+    printf("Movimento do BISPO:\n");
+    moverBispoRecursivo(5, 1); // 5 casas na diagonal (cima + direita)
+    printf("\n");
+
+    // Movimento da RAINHA (recursivo)
+    printf("Movimento da RAINHA:\n");
+    moverRainha(8, 1); // 8 casas para a esquerda
+    printf("\n");
+
+    // Movimento do CAVALO (loops complexos)
+    moverCavalo();
+    printf("\n");
+
+    printf("=== Simulação Concluída! ===\n");
+    return 0;
+}
