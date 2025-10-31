@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+int main() {
+    // ----------------------------------
+    // Movimento da TORRE (usa FOR)
+    // ----------------------------------
+    int casasTorre = 5; // número de casas que a Torre vai se mover
+    printf("Movimento da TORRE:\n");
+    for (int i = 1; i <= casasTorre; i++) {
+        printf("Direita (%d)\n", i);
+    }
+
+    printf("\n");
+
+    // ----------------------------------
+    // Movimento do BISPO (usa WHILE)
+    // ----------------------------------
+    int casasBispo = 5; // número de casas que o Bispo vai se mover
+    int i = 1;
+    printf("Movimento do BISPO:\n");
+    while (i <= casasBispo) {
+        printf("Cima, Direita (%d)\n", i);
+        i++;
+    }
+
+    printf("\n");
+
+    // ----------------------------------
+    // Movimento da RAINHA (usa DO-WHILE)
+    // ----------------------------------
+    int casasRainha = 8; // número de casas que a Rainha vai se mover
+    int j = 1;
+    printf("Movimento da RAINHA:\n");
+    do {
+        printf("Esquerda (%d)\n", j);
+        j++;
+    } while (j <= casasRainha);
+
+    printf("\n");
+
+    // ----------------------------------
+    // Movimento do CAVALO (usa FOR + WHILE)
+    // ----------------------------------
+    int movimentoVertical = 2; // duas casas para baixo
+    int movimentoHorizontal = 1; // uma casa para a esquerda
+
+    printf("Movimento do CAVALO:\n");
+
+    // Loop externo (FOR) — controla o movimento para baixo
+    for (int linha = 1; linha <= movimentoVertical; linha++) {
+        printf("Baixo (%d)\n", linha);
+    }
+
+    // Linha em branco para separar visualmente os dois eixos
+    printf("\n");
+
+    // Loop interno (WHILE) — controla o movimento para a esquerda
+    int coluna = 1;
+    while (coluna <= movimentoHorizontal) {
+        printf("Esquerda (%d)\n", coluna);
+        coluna++;
+    }
+
+    printf("\nMovimentos concluídos!\n");
+
+    return 0;
+}
